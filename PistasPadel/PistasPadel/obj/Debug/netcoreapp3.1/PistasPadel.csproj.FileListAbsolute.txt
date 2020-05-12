@@ -108,3 +108,4 @@ C:\Users\erick\Source\Repos\thedragonflu\PistasPadel\PistasPadel\PistasPadel\obj
 C:\Users\erick\Source\Repos\thedragonflu\PistasPadel\PistasPadel\PistasPadel\obj\Debug\netcoreapp3.1\PistasPadel.dll
 C:\Users\erick\Source\Repos\thedragonflu\PistasPadel\PistasPadel\PistasPadel\obj\Debug\netcoreapp3.1\PistasPadel.pdb
 C:\Users\erick\Source\Repos\thedragonflu\PistasPadel\PistasPadel\PistasPadel\obj\Debug\netcoreapp3.1\PistasPadel.genruntimeconfig.cache
+C:\Users\erick\Source\Repos\thedragonflu\PistasPadel\PistasPadel\PistasPadel\obj\Debug\netcoreapp3.1\Razor\Pages\AceptarCancelarReserva.cshtml.g.cs
