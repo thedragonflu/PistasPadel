@@ -4,24 +4,161 @@
     ViewData["Title"] = "Reservas";
 }
 
-<div class="text-center container row">
-    <form name="principal">
-        <div>
-            <h1>Reservas</h1>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover, .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container row">
+    <div class="col-6">
+        <h2 class="text-info text-light">Reservas Pistas</h2>
+    </div>
+    <br />
+</div>
+<br />
+<div class="4">
+    <input type="date" id="fecha" />
+</div>
+<br />
+
+<div style="padding: 4px;width: 100%;height: 550px;overflow: auto;">
+
+    @*Bucle que crea el la tabla con el horario de 9:00 a 21:00*@
+    <table class="table table-striped border">
+        <tr class="table-secondary">
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Reservas</th>
+        </tr>
+
+        @for (var i = 9; i <= 21; i++)
+        {
+            <tr class="text-light">
+                <td>@i:00</td>
+                <td id="@i-h">Libre</td>
+                <td>
+                    <a class="btn btn-success btn-sm" style="color:white" onclick="reserva(this, '@i-h')">Reservar</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <!-- -------------------------------------------------------------------------------- -->
+
+    <!-- Apertura del modelo Modal Box -->
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+                <p>¿Quiere reservar una pista de padel a esta hora?</p>
+                <a class="btn btn-success" id="btnAceptar">Aceptar</a>
+                <a class="btn btn-danger close" onclick="confirmarSalirSinReservar()">Cancelar</a>
         </div>
-        <br />
-        <div>
-            <input type="date" />
-        </div>
-        <br />
-        <div>
-            <select name="credit_card" size="3">
-                <option value="Visa">Visa</option>
-                <option value="Mastercard">Mastercard</option>
-                <option value="American Express">American Express</option>
-            </select>
-        </div>
-    </form>
+
+    </div>
 </div>
 
+<script>
+    // Formato de la fecha actual
+    var fecha = document.querySelector('input[type="date"]');
 
+    function formatoFecha() {
+        let date = new Date();
+        let year = date.getFullYear().toString();
+        let day = date.getDate().toString();
+        let month = date.getMonth() + 1;
+        if (month < 9) {
+            return year + "-0" + month.toString() + "-" + day;
+        } else {
+            return year + "-" + month + "-" + day;
+        }
+
+    }
+    fecha.value = formatoFecha();
+
+    // Cambio de estilo de Libre a Reservado
+    function reserva(elmnt, id) {
+        let element = document.getElementById(id);
+        element.style.background = "purple";
+        element.style.color = "white";
+        element.innerHTML = "Reservado";
+        element.style.borderRadius = "0px 50px 50px 0px";
+
+        element.previousElementSibling.style.background = "purple";
+        element.previousElementSibling.style.color = "white";
+        element.previousElementSibling.style.borderRadius = "50px 0px 0px 50px";
+
+        elmnt.className = "btn btn-danger btn-sm";
+        elmnt.innerHTML = "Cancelar";
+    }
+
+    // --------------------------------------------------------------------------------
+
+    // Obtiene modal
+    var modal = document.getElementById("myModal");
+
+    // Obtiene el botón que abre modal
+    var btn = document.getElementById("myBtn");
+
+    // Obtiene el elemento que cierra modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

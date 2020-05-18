@@ -4,7 +4,56 @@
     ViewData["Title"] = "Home page";
 }
 
+    
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <img src="~/Image/padel.png" style="width:250px;height:250px" />
+</div>
+<div style="display:flex;justify-content:center;align-items:center">
+    <div class="text-light text-center" style="height:350px;width:500px;border-top-width:5px">
+        <br/>
+        <h3 class="text-light">Inicio Sesión</h3>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="container" style="padding:30px;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <label>Usuario</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="text-light"
+                                   style="border:none;border-bottom:2px solid white;background-color:#1F48CF;outline:none"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <label>Contraseña</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="text-light"
+                                   style="border:none;border-bottom:2px solid white;background-color:#1F48CF;outline:none"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-sm-4">
+                        <input type="submit" value="Inicio" class="btn btn-success form-control"/>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            @*Este boton es temporal, cuando se añada la pantalla de inicio de sesiom se podra quitar*@
+                            <a class="btn btn-dark form-control col-sm-12" asp-page="ReservasPistas">Reservas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
